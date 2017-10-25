@@ -9,7 +9,7 @@ router.get('/', function (req, res, next) {
 
     fs.readdir(testFolder, function (err, files) {
         console.log(files);
-        res.render('index', {title: 'Fly Me', files: files});
+        res.render('index', {title: 'Fly My Ass', files: files});
     });
 
 });
