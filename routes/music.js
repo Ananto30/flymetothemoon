@@ -10,6 +10,7 @@ router.get('/:songName', function (req, res, next) {
     fs.exists(file, function (exists) {
         if (exists) {
             var rstream = fs.createReadStream(file);
+            res.writeHead(200, { 'Content-Length': total, 'Content-Type': 'audio/mpeg' });
             rstream.pipe(res);
         }
         else {
