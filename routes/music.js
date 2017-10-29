@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 
 var fs = require('fs');
-var google = require('googleapis');
 
 /* play song */
 router.get('/:songName', function (req, res, next) {
