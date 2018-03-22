@@ -1,53 +1,291 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <title><%= title %></title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>Fly Me to The Moon</title>
+    <link rel="icon" href="assets/img/content/icon.png">
+    <!-- ========== CSS INCLUDES ========== -->
+    <link rel="stylesheet" href="assets/css/master.css">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <h1><%= title %></h1>
-    <ul class="list-group">
-        <% for(var i = 0; i < files.length; i++) { %>
-            <a href="#" id="song" class="list-group-item list-group-item-action" onclick="playSong(this)"><%= files[i] %></a>
-        <% } %>
-    </ul>
-</div>
-
-<footer class="footer">
-    <div class="container">
-        <audio controls id="player" src=""></audio>
+<div class="page-loader">
+    <div class="vertical-align align-center">
+        <img src="assets/loader/loader.gif" alt="" class="loader-img">
     </div>
-</footer>
+</div>
+<!-- =============== START PLAYER ================ -->
+<div class="main-music-player">
+    <a class="hide-player-button">
+        <i class="fa fa-plus"></i>
+        <i class="fa fa-minus"></i>
+    </a>
+    <div id="mesh-main-player" class="jp-jplayer" data-audio-src="music/Fly Me To The Moon.mp3"
+         data-title="Fly me to the moon" data-artist="Frank Sinatra"></div>
+
+    <div id="mesh-main-player-content" class="mesh-main-player" role="application" aria-label="media player">
+        <div class="container">
+            <div class="row">
+                <div class="left-player-side">
+                    <div class="mesh-prev">
+                        <i class="fa fa-step-backward"></i>
+                    </div>
+                    <div class="mesh-play">
+                        <i class="fa fa-play"></i>
+                    </div>
+                    <div class="mesh-pause">
+                        <i class="fa fa-pause"></i>
+                    </div>
+                    <div class="mesh-next">
+                        <i class="fa fa-step-forward"></i>
+                    </div>
+                    <button id="playlist-toggle" class="jplayerButton">
+                        <span class="span-1"></span>
+                        <span class="span-2"></span>
+                        <span class="span-3"></span>
+                    </button>
+                </div>
+                <div class="center-side">
+                    <div class="mesh-current-time">
+                    </div>
+                    <div class="mesh-seek-bar">
+                        <div class="mesh-play-bar">
+                        </div>
+                    </div>
+                    <div class="mesh-duration">
+                    </div>
+                </div>
+                <div class="right-player-side">
+                    <div class="mesh-title">
+                    </div>
+                    <div class="mesh-artist">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- =============== END PLAYER ================ -->
+
+<!-- =============== START PLAYLIST ================ -->
+<div class="playlist-wrapper" id="playlist-wrapper">
+    <div class="jp-playlist container">
+        <div class="about-list clearfix">
+            <span class="about-name">NAME</span>
+            <span class="about-length">LENGTH</span>
+        </div>
+
+        <% for(var i = 0; i < files.length; i++) { %>
+        <div class="trak-item" data-audio="music/<%= files[i] %>" data-artist="Frank Sinatra">
+            <audio preload="metadata" src="music/<%= files[i] %>"
+                   title="<%= files[i].slice(0, -4) %>"></audio>
+            <div class="play-pause-button">
+                <div class="center-y-table">
+                    <i class="fa fa-play"></i>
+                </div>
+            </div>
+            <div class="name-artist">
+                <div class="center-y-table">
+                    <h2>
+                        <%= files[i].slice(0, -4) %>
+                    </h2>
+                </div>
+            </div>
+            <time class="trak-duration">
+                00:00
+            </time>
+        </div>
+        <% } %>
+
+    </div>
+</div>
+<!-- =============== END PLAYLIST ================ -->
+
+<!-- =============== START TOP HEADER ================ -->
+<div class="topHeader">
+    <div class="header">
+        <div class="rightTopHeader">
 
 
+        </div><!-- end rightTopHeader -->
+    </div><!-- end header -->
+    <!-- Menu Fixed Container -->
+    <div class="menu-fixed-container">
+        <!-- Menu Fixed Centred Container -->
+
+    </div><!-- end menu-fixed-container -->
+    <!-- =============== STAR LOGO ================ -->
+    <div class="logo-container-top">
+        <h2 style="font-family: 'Dancing Script', cursive; color: #fbfbfb;">Fly me to the moon</h2>
+    </div><!-- end logo-container-top -->
+    <!-- =============== END LOGO ================ -->
+</div><!-- end topHeader -->
+<!-- =============== END TOP HEADER ================ -->
+
+<!-- =============== START BREADCRUMB ================ -->
+<section class="no-mb">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="before-FullscreenSlider"></div>
+            <div class="breadcrumb-fullscreen-parent phone-menu-bg">
+                <div class="breadcrumb breadcrumb-fullscreen alignleft small-description overlay almost-black-overlay"
+                     style="background-image: url('assets/img/albums/sin2.jpeg');" data-stellar-background-ratio="0.5"
+                     data-stellar-vertical-offset="0">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- =============== END BREADCRUMB ================ -->
+
+<!-- =============== START ALBUM SINGLE ================ -->
+<section class="albumSingle padding background-properties">
+    <div class="container">
+        <div class="sectionTitle paddingBottom">
+            <span class="heading-t3"></span>
+            <h2>Fly me to the moon</h2>
+            <span class="heading-b3"></span>
+        </div><!-- end sectionTtile -->
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="jp-playlist">
+                    <div class="about-list clearfix">
+                        <span class="about-name">NAME</span>
+                        <span class="about-length">LENGTH</span>
+                    </div>
+                    <% for(var i = 0; i < files.length; i++) { %>
+                    <div class="trak-item" data-audio="music/<%= files[i] %>" data-artist="Frank Sinatra">
+                        <audio preload="metadata" src="music/<%= files[i] %>"
+                               title="<%= files[i].slice(0, -4) %>"></audio>
+                        <div class="play-pause-button">
+                            <div class="center-y-table">
+                                <i class="fa fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="name-artist">
+                            <div class="center-y-table">
+                                <h2>
+                                    <%= files[i].slice(0, -4) %>
+                                </h2>
+                            </div>
+                        </div>
+                        <time class="trak-duration">
+                            00:00
+                        </time>
+                    </div>
+                    <% } %>
+
+                </div>
+            </div><!-- end-col-sm-8 -->
+            <div class="col-sm-3 col-sm-offset-1">
+                <div class="sidebarAlbum">
+                    <div class="widget">
+                        <h3>Details</h3>
+                        <ul>
+                            <li>"Fly Me to the Moon", originally titled "In Other Words"</li>
+                            <li>Release Date:<span> 1954  </span></li>
+                            <li>Song Writer:<span>Bart Howard</span></li>
+                            <li>Frank Covered In:<span>1964 </span></li>
+                        </ul>
+                    </div><!-- end widget -->
+                    <div class="widget">
+                        <h3>Available On</h3>
+                        <section>
+                            <ul id='services'>
+                                <li>
+                                    <a href="#">
+                                        <div><i class="fa fa-soundcloud"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div><i class="fa fa-apple"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div><i class="fa fa-spotify"></i></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div><i class="fa fa-amazon"></i></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </section>
+                    </div><!-- end widget -->
+                </div><!-- end sidebarAlbum -->
+            </div><!-- end col-sm-3 col-sm-offset-1 -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section>
+<!-- =============== END ALBUM SINGLE ================ -->
+
+
+<!-- =============== START FOOTER ================ -->
+<section style="background-color:#eeeeee;">
+    <div class="footer footerPadding">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="copyFooter">
+                        <a href="#">&copy; Azizul Haque Ananto 2018</a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <nav class="social-icons">
+                        <ul class="clearfix" style="text-align: center;">
+                            <li><a href="#" class="icon-button shopIcon"><i class="fa fa-twitter"></i><span></span></a>
+                            </li>
+                            <li><a href="#" class="icon-button shopIcon"><i class="fa fa-facebook"></i><span></span></a>
+                            </li>
+                            <li><a href="#" class="icon-button shopIcon"><i
+                                            class="fa fa-soundcloud"></i><span></span></a></li>
+                            <li><a href="#" class="icon-button shopIcon"><i class="fa fa-youtube-play"></i><span></span></a>
+                            </li>
+
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-sm-4">
+                    <div class="goTop" id="back-to-top">
+                        <i class="fa fa-angle-up"></i>
+                        <a href="#">Go Top</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- =============== END FOOTER ================ -->
+
+<!-- ================================================== -->
+<!-- =============== START JQUERY SCRIPTS ================ -->
+<!-- ================================================== -->
+
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/plugins.js"></script>
+<script type="text/javascript" src="assets/jplayer/jplayer/jquery.jplayer.js"></script>
+<script src="assets/js/jPlayer.js"></script>
+<script src="assets/js/mainVideo.js"></script>
+
+<!--[if lte IE 9 ]>
+<script src="assets/js/placeholder.js"></script>
 <script>
-    function _(id) {
-        return document.getElementById(id);
-    }
-    function playSong(id) {
-        _("player").src = "/music/" + id.innerHTML;
-        _("player").play();
-    }
+    jQuery(function () {
+        jQuery('input, textarea').placeholder();
+    });
 </script>
+<![endif]-->
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
-        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
-        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
-        crossorigin="anonymous"></script>
+<!-- ================================================== -->
+<!-- =============== END JQUERY SCRIPTS ================ -->
+<!-- ================================================== -->
 </body>
+
 </html>
