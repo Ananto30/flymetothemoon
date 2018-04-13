@@ -9,6 +9,8 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var music = require('./routes/music');
 
+var redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
+
 var app = express();
 
 // view engine setup
@@ -22,6 +24,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+// Don't redirect if the hostname is `localhost:port` or the route is `/insecure`
+app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/]));
 
 app.use('/', index);
 app.use('/users', users);

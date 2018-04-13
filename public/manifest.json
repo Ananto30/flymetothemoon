@@ -1,0 +1,15 @@
+{
+  "name": "Fly me to the Moon",
+  "short_name": "Fly me to the Moon",
+  "display": "standalone",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "sinatra.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
