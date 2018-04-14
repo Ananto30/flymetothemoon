@@ -29,6 +29,8 @@ self.addEventListener('install', function (e) {
                 'assets/js/site.js',
                 'assets/css/master.css',
                 'https://fonts.googleapis.com/css?family=Dancing+Script',
+                'music/',
+                'assets/img/albums/'
             ]);
         })
     );
