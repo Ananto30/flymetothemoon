@@ -164,8 +164,8 @@ var playerPlayOne = {
                     album: '',
                     artwork: [
                         {
-                            src: 'http://www.gorillatshirts.co.uk//image/cache/data/template01/grey/107-192x192.jpg',
-                            sizes: '192x192',
+                            src: 'https://s-media-cache-ak0.pinimg.com/originals/fb/5b/7f/fb5b7fefd5c063d32627d76113307aa6.jpg',
+                            sizes: '512x512',
                             type: 'image/jpg'
                         },
                     ]
@@ -348,7 +348,7 @@ var playerPlayOne = {
 
     playNextSong: function () {
 
-        jQuery('.mesh-next').on('click', function () {
+        jQuery('.mesh-next').on('click', function playn() {
 
             var playingSongParent = jQuery('.trak-item.active');
 
@@ -396,15 +396,15 @@ jQuery(document).ready(function () {
     playerPlayOne.playPrevStong();
     playerPlayOne.playNextSong();
 
-    if ('mediaSession' in navigator) {
-        navigator.mediaSession.setActionHandler('previoustrack', function () {
-            playerPlayOne.playPrevStong();
-        });
 
-        navigator.mediaSession.setActionHandler('nexttrack', function () {
-            playerPlayOne.playNextSong();
-        });
-    }
+    navigator.mediaSession.setActionHandler('previoustrack', function () {
+        playerPlayOne.playPrev();
+    });
+
+    navigator.mediaSession.setActionHandler('nexttrack', function () {
+        playerPlayOne.playNext();
+    });
+
 
     jQuery('.hide-player-button').on('click', function () {
 
