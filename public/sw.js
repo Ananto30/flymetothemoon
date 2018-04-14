@@ -12,10 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+const CACHE_NAME = 'your-magic-cache';
 
 self.addEventListener('install', function (e) {
     e.waitUntil(
-        caches.open('your-magic-cache').then(function (cache) {
+        caches.open(CACHE_NAME).then(function (cache) {
             return cache.addAll([
                 '/',
                 'sw.js',
@@ -29,17 +30,43 @@ self.addEventListener('install', function (e) {
                 'assets/js/site.js',
                 'assets/css/master.css',
                 'https://fonts.googleapis.com/css?family=Dancing+Script',
+                'assets/img/albums/sin2.jpeg',
+                'assets/fonts/fontawesome-webfont93e3.woff2?v=4.4.0',
+                'assets/loader/loader.gif',
             ]);
         })
     );
 });
+//
+// self.addEventListener('fetch', function (event) {
+//     event.respondWith(
+//         caches.match(event.request).then(function (response) {
+//             return response || fetch(event.request);
+//         })
+//     );
+// });
 
 self.addEventListener('fetch', function (event) {
-    event.respondWith(
-        caches.match(event.request).then(function (response) {
-            return response || fetch(event.request);
-        })
-    );
+    var requestURL = new URL(event.request.url);
+    var freshResource = fetch(event.request).then(function (response) {
+        var clonedResponse = response.clone();
+        // Don't update the cache with error pages!
+        if (response.ok) {
+            // All good? Update the cache with the network response
+            caches.open(CACHE_NAME).then(function (cache) {
+                cache.put(event.request, clonedResponse);
+            });
+        }
+        return response;
+    });
+    var cachedResource = caches.open(CACHE_NAME).then(function (cache) {
+        return cache.match(event.request).then(function(response) {
+            return response || freshResource;
+        });
+    }).catch(function (e) {
+        return freshResource;
+    });
+    event.respondWith(cachedResource);
 });
 
 self.addEventListener('activate', function (event) {
