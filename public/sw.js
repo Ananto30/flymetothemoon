@@ -13,21 +13,31 @@
 // limitations under the License.
 
 
-self.addEventListener('install', function(e) {
-  e.waitUntil(
-    caches.open('your-magic-cache').then(function(cache) {
-      return cache.addAll([
-        '/',
-        '/manifest.json',
-      ]);
-    })
-  );
+self.addEventListener('install', function (e) {
+    e.waitUntil(
+        caches.open('your-magic-cache').then(function (cache) {
+            return cache.addAll([
+                '/',
+                '/manifest.json',
+                'assets/js/jquery.js',
+                'assets/js/bootstrap.min.js',
+                'assets/js/plugins.js',
+                'assets/jplayer/jplayer/jquery.jplayer.js',
+                'assets/js/jPlayer.js',
+                'assets/js/mainVideo.js',
+                'assets/js/site.js',
+                'assets/js/placeholder.js',
+                'assets/css/master.css',
+                'https://fonts.googleapis.com/css?family=Dancing+Script',
+            ]);
+        })
+    );
 });
 
-self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.match(event.request).then(function(response) {
-      return response || fetch(event.request);
-    })
-  );
+self.addEventListener('fetch', function (event) {
+    event.respondWith(
+        caches.match(event.request).then(function (response) {
+            return response || fetch(event.request);
+        })
+    );
 });
