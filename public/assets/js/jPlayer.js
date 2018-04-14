@@ -154,6 +154,18 @@ var playerPlayOne = {
                 jPlayerPausePlay = jQuery(this).parent().find('audio').attr('data-state'),
                 pauseIf = jQuery('.jp-jplayer').attr('data-audio-src');
 
+            if ('mediaSession' in navigator) {
+
+                navigator.mediaSession.metadata = new MediaMetadata({
+                    title: songTitle,
+                    artist: audtioArtist,
+                    album: '',
+                    artwork: [
+                        { src: 'http://www.gorillatshirts.co.uk//image/cache/data/template01/grey/107-192x192.jpg', sizes: '192x192', type: 'image/jpg' },
+                    ]
+                });
+            }
+
             if ( pauseIf == songSrc ) {
 
                 if ( jPlayerPausePlay == 'play' ) {
