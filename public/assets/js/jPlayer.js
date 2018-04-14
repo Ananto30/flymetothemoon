@@ -420,14 +420,15 @@ jQuery(document).ready(function () {
     playerPlayOne.playPrevStong();
     playerPlayOne.playNextSong();
 
+    if ('mediaSession' in navigator) {
+        navigator.mediaSession.setActionHandler('previoustrack', function () {
+            playerPlayOne.playp();
+        });
 
-    navigator.mediaSession.setActionHandler('previoustrack', function () {
-        playerPlayOne.playp();
-    });
-
-    navigator.mediaSession.setActionHandler('nexttrack', function () {
-        playerPlayOne.playn();
-    });
+        navigator.mediaSession.setActionHandler('nexttrack', function () {
+            playerPlayOne.playn();
+        });
+    }
 
 
     jQuery('.hide-player-button').on('click', function () {

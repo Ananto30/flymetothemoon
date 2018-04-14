@@ -26,7 +26,6 @@ self.addEventListener('install', function (e) {
                 'assets/js/jPlayer.js',
                 'assets/js/mainVideo.js',
                 'assets/js/site.js',
-                'assets/js/placeholder.js',
                 'assets/css/master.css',
                 'https://fonts.googleapis.com/css?family=Dancing+Script',
             ]);
