@@ -14,6 +14,22 @@ jQuery("#mesh-main-player").jPlayer({
                 audtioThumb = $this.data('thumbnail'),
                 audtioArtist = $this.data('artist');
 
+            if ('mediaSession' in navigator) {
+
+                navigator.mediaSession.metadata = new MediaMetadata({
+                    title: audtioTitle,
+                    artist: audtioArtist,
+                    album: '',
+                    artwork: [
+                        {
+                            src: 'https://s-media-cache-ak0.pinimg.com/originals/fb/5b/7f/fb5b7fefd5c063d32627d76113307aa6.jpg',
+                            sizes: '512x512',
+                            type: 'image/jpg'
+                        },
+                    ]
+                });
+            }
+
             jQuery('.mesh-main-player .mesh-artist').text(audtioArtist);
 
             jQuery('.mesh-main-player .mesh-thumbnail img').attr('src', audtioThumb);
@@ -80,6 +96,7 @@ jQuery("#mesh-main-player").jPlayer({
                 soundThumb = parentForFind.data('thumbnail'),
                 audtioArtist = parentForFind.data('artist'),
                 jPlayerPausePlay = jQuery('.jp-jplayer').attr('data-state');
+
 
             jQuery('.mesh-main-player .mesh-artist').text(audtioArtist);
 
@@ -155,22 +172,6 @@ var playerPlayOne = {
                 findItemByTitlteClick = jQuery('.trak-item.active[data-audio="' + songSrc + '"][data-artist="' + audtioArtist + '"][data-thumbnail="' + soundThumb + '"]'),
                 jPlayerPausePlay = jQuery(this).parent().find('audio').attr('data-state'),
                 pauseIf = jQuery('.jp-jplayer').attr('data-audio-src');
-
-            if ('mediaSession' in navigator) {
-
-                navigator.mediaSession.metadata = new MediaMetadata({
-                    title: songTitle,
-                    artist: audtioArtist,
-                    album: '',
-                    artwork: [
-                        {
-                            src: 'https://s-media-cache-ak0.pinimg.com/originals/fb/5b/7f/fb5b7fefd5c063d32627d76113307aa6.jpg',
-                            sizes: '512x512',
-                            type: 'image/jpg'
-                        },
-                    ]
-                });
-            }
 
             if (pauseIf == songSrc) {
 
