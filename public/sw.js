@@ -29,12 +29,19 @@ self.addEventListener('install', function (e) {
                 'assets/js/site.js',
                 'assets/css/master.css',
                 'https://fonts.googleapis.com/css?family=Dancing+Script',
-                'music/',
-                'assets/img/albums/'
             ]);
         })
     );
 });
+
+self.addEventListener('fetch', function (event) {
+    event.respondWith(
+        caches.match(event.request).then(function (response) {
+            return response || fetch(event.request);
+        })
+    );
+});
+
 self.addEventListener('activate', function (event) {
     event.waitUntil(
         caches.keys().then(function (cacheNames) {
@@ -47,13 +54,6 @@ self.addEventListener('activate', function (event) {
                     return caches.delete(cacheName);
                 })
             );
-        })
-    );
-});
-self.addEventListener('fetch', function (event) {
-    event.respondWith(
-        caches.match(event.request).then(function (response) {
-            return response || fetch(event.request);
         })
     );
 });
