@@ -1,10 +1,10 @@
 /*
  * jPlayer Plugin for jQuery JavaScript Library
- * http://www.jplayer.org
+ * https://www.jplayer.org
  *
  * Copyright (c) 2009 - 2014 Happyworm Ltd
  * Licensed under the MIT license.
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  * Author: Mark J Panaghiston
  * Version: 2.9.2
@@ -287,7 +287,7 @@
 	}
 
 	// Internet Explorer (IE) Browser Document Mode Sniffer. Based on code at:
-	// http://msdn.microsoft.com/en-us/library/cc288325%28v=vs.85%29.aspx#GetMode
+	// https://msdn.microsoft.com/en-us/library/cc288325%28v=vs.85%29.aspx#GetMode
 	$.jPlayer.getDocMode = function() {
 		var docMode;
 		if ($.jPlayer.browser.msie) {
@@ -316,7 +316,7 @@
 			var d = document,
 				v = d.createElement('video'),
 				spec = {
-					// http://www.w3.org/TR/fullscreen/
+					// https://www.w3.org/TR/fullscreen/
 					w3c: [
 						'fullscreenEnabled',
 						'fullscreenElement',
@@ -334,8 +334,8 @@
 						'mozfullscreenchange',
 						'mozfullscreenerror'
 					],
-					// http://developer.apple.com/library/safari/#documentation/WebKit/Reference/ElementClassRef/Element/Element.html
-					// http://developer.apple.com/library/safari/#documentation/UserExperience/Reference/DocumentAdditionsReference/DocumentAdditions/DocumentAdditions.html
+					// https://developer.apple.com/library/safari/#documentation/WebKit/Reference/ElementClassRef/Element/Element.html
+					// https://developer.apple.com/library/safari/#documentation/UserExperience/Reference/DocumentAdditionsReference/DocumentAdditions/DocumentAdditions.html
 					webkit: [
 						'',
 						'webkitCurrentFullScreenElement',
@@ -344,7 +344,7 @@
 						'webkitfullscreenchange',
 						''
 					],
-					// http://developer.apple.com/library/safari/#documentation/AudioVideo/Reference/HTMLVideoElementClassReference/HTMLVideoElement/HTMLVideoElement.html
+					// https://developer.apple.com/library/safari/#documentation/AudioVideo/Reference/HTMLVideoElementClassReference/HTMLVideoElement/HTMLVideoElement.html
 					// https://developer.apple.com/library/safari/samplecode/HTML5VideoEventFlow/Listings/events_js.html#//apple_ref/doc/uid/DTS40010085-events_js-DontLinkElementID_5
 					// Events: 'webkitbeginfullscreen' and 'webkitendfullscreen'
 					webkitVideo: [
@@ -1100,7 +1100,7 @@
 				var htmlObj,
 				flashVars = 'jQuery=' + encodeURI(this.options.noConflict) + '&id=' + encodeURI(this.internal.self.id) + '&vol=' + this.options.volume + '&muted=' + this.options.muted;
 
-				// Code influenced by SWFObject 2.2: http://code.google.com/p/swfobject/
+				// Code influenced by SWFObject 2.2: https://code.google.com/p/swfobject/
 				// Non IE browsers have an initial Flash size of 1 by 1 otherwise the wmode affected the Flash ready event. 
 
 				if($.jPlayer.browser.msie && (Number($.jPlayer.browser.version) < 9 || $.jPlayer.browser.documentMode < 9)) {
@@ -3313,8 +3313,8 @@
 		_getFlashPluginVersion: function() {
 
 			// _getFlashPluginVersion() code influenced by:
-			// - FlashReplace 1.01: http://code.google.com/p/flashreplace/
-			// - SWFObject 2.2: http://code.google.com/p/swfobject/
+			// - FlashReplace 1.01: https://code.google.com/p/flashreplace/
+			// - SWFObject 2.2: https://code.google.com/p/swfobject/
 
 			var version = 0,
 				flash;

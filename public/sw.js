@@ -17,8 +17,9 @@ self.addEventListener('install', function (e) {
     e.waitUntil(
         caches.open('your-magic-cache').then(function (cache) {
             return cache.addAll([
-                '/',
-                '/manifest.json',
+                '',
+                'sw.js',
+                'manifest.json',
                 'assets/js/jquery.js',
                 'assets/js/bootstrap.min.js',
                 'assets/js/plugins.js',
@@ -32,7 +33,21 @@ self.addEventListener('install', function (e) {
         })
     );
 });
-
+self.addEventListener('activate', function (event) {
+    event.waitUntil(
+        caches.keys().then(function (cacheNames) {
+            return Promise.all(
+                cacheNames.filter(function (cacheName) {
+                    // Return true if you want to remove this cache,
+                    // but remember that caches are shared across
+                    // the whole origin
+                }).map(function (cacheName) {
+                    return caches.delete(cacheName);
+                })
+            );
+        })
+    );
+});
 self.addEventListener('fetch', function (event) {
     event.respondWith(
         caches.match(event.request).then(function (response) {
