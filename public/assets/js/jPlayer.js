@@ -1,4 +1,4 @@
-jQuery('.trak-item audio').attr('data-state','pause');
+jQuery('.trak-item audio').attr('data-state', 'pause');
 
 var pauseIf,
     jPlayerPausePlay = 'pause';
@@ -6,25 +6,25 @@ var pauseIf,
 jQuery("#mesh-main-player").jPlayer({
     ready: function () {
 
-        if ( jQuery('.playlist-wrapper .jp-playlist .trak-item').length > 0 ) {
+        if (jQuery('.playlist-wrapper .jp-playlist .trak-item').length > 0) {
 
             var $this = jQuery('.playlist-wrapper .jp-playlist .about-list').next();
-                audioSrc = $this.data('audio'),
+            audioSrc = $this.data('audio'),
                 audtioTitle = $this.find('audio').attr('title'),
                 audtioThumb = $this.data('thumbnail'),
                 audtioArtist = $this.data('artist');
 
             jQuery('.mesh-main-player .mesh-artist').text(audtioArtist);
 
-            jQuery('.mesh-main-player .mesh-thumbnail img').attr('src',audtioThumb);
+            jQuery('.mesh-main-player .mesh-thumbnail img').attr('src', audtioThumb);
 
             $this.addClass('active');
 
-            $this.find('audio').attr('data-state','pause');
+            $this.find('audio').attr('data-state', 'pause');
 
             jQuery('.jp-jplayer').attr({
-                'data-state':'pause',
-                'data-audio-src':audioSrc
+                'data-state': 'pause',
+                'data-audio-src': audioSrc
             });
 
             jQuery("#mesh-main-player").jPlayer("setMedia", {
@@ -68,11 +68,11 @@ jQuery("#mesh-main-player").jPlayer({
     },
     errorAlerts: false,
     warningAlerts: false,
-    ended: function() {
+    ended: function () {
 
-       var playingSongParent = jQuery('.trak-item.active');
+        var playingSongParent = jQuery('.trak-item.active');
 
-        if ( playingSongParent.next().length > 0 ) {
+        if (playingSongParent.next().length > 0) {
 
             var parentForFind = playingSongParent.next(),
                 songTitle = parentForFind.find('audio').attr('title'),
@@ -87,18 +87,18 @@ jQuery("#mesh-main-player").jPlayer({
 
             parentForFind.addClass('active playing');
 
-            jQuery('.mesh-thumbnail img').attr('src',soundThumb);
+            jQuery('.mesh-thumbnail img').attr('src', soundThumb);
 
             jQuery("#mesh-main-player").jPlayer("setMedia", {
                 title: songTitle,
                 m4a: songSrc
             }).jPlayer("play");
 
-            parentForFind.find('audio').attr('data-state','play');
+            parentForFind.find('audio').attr('data-state', 'play');
 
             jQuery('.jp-jplayer').attr({
-                'data-state':'play',
-                'data-audio-src':songSrc
+                'data-state': 'play',
+                'data-audio-src': songSrc
             });
 
 
@@ -106,42 +106,44 @@ jQuery("#mesh-main-player").jPlayer({
 
             playingSongParent.removeClass('playing');
 
-            playingSongParent.find('audio').attr('data-state','pause');
+            playingSongParent.find('audio').attr('data-state', 'pause');
 
-        };
+        }
+        ;
 
     },
-    play: function() {
+    play: function () {
 
         jQuery('.trak-item.active').addClass('playing');
 
-        jQuery('.trak-item.active').find('audio').attr('data-state','play');
+        jQuery('.trak-item.active').find('audio').attr('data-state', 'play');
 
-        jQuery('.jp-jplayer').attr('data-state','play');
+        jQuery('.jp-jplayer').attr('data-state', 'play');
 
     },
-    pause: function() {
+    pause: function () {
 
         jQuery('.trak-item.active').removeClass('playing');
 
-        jQuery('.trak-item.active').find('audio').attr('data-state','pause');
+        jQuery('.trak-item.active').find('audio').attr('data-state', 'pause');
 
-        jQuery('.jp-jplayer').attr('data-state','pause');
+        jQuery('.jp-jplayer').attr('data-state', 'pause');
 
     }
 });
 
 var playerPlayOne = {
 
-    init: function(){
+    init: function () {
 
-        jQuery('.trak-item .play-pause-button').on('click',function(){
+        jQuery('.trak-item .play-pause-button').on('click', function () {
             jQuery('.main-music-player').removeClass('hide-player');
-            if ( jQuery(this).parent().hasClass('active') ) {} else {
+            if (jQuery(this).parent().hasClass('active')) {
+            } else {
 
                 jQuery('.trak-item').removeClass('active playing');
-                jQuery('.trak-item audio').data('state','pause');
-                jQuery('.jp-jplayer').attr('data-state','pause');
+                jQuery('.trak-item audio').data('state', 'pause');
+                jQuery('.jp-jplayer').attr('data-state', 'pause');
 
             }
 
@@ -161,24 +163,28 @@ var playerPlayOne = {
                     artist: audtioArtist,
                     album: '',
                     artwork: [
-                        { src: 'http://www.gorillatshirts.co.uk//image/cache/data/template01/grey/107-192x192.jpg', sizes: '192x192', type: 'image/jpg' },
+                        {
+                            src: 'http://www.gorillatshirts.co.uk//image/cache/data/template01/grey/107-192x192.jpg',
+                            sizes: '192x192',
+                            type: 'image/jpg'
+                        },
                     ]
                 });
             }
 
-            if ( pauseIf == songSrc ) {
+            if (pauseIf == songSrc) {
 
-                if ( jPlayerPausePlay == 'play' ) {
+                if (jPlayerPausePlay == 'play') {
 
-                    if ( parentForFind.hasClass('active') ) {
+                    if (parentForFind.hasClass('active')) {
 
                         jQuery("#mesh-main-player").jPlayer("pause");
 
                         parentForFind.removeClass('playing');
 
-                        parentForFind.find('audio').attr('data-state','pause');
+                        parentForFind.find('audio').attr('data-state', 'pause');
 
-                        jQuery('.jp-jplayer').attr('data-state','pause');
+                        jQuery('.jp-jplayer').attr('data-state', 'pause');
 
                         findItemByTitlteClick.addClass('active');
                         findItemByTitlteClick.removeClass('playing');
@@ -198,11 +204,11 @@ var playerPlayOne = {
                             m4a: songSrc
                         }).jPlayer("play");
 
-                        parentForFind.find('audio').attr('data-state','play');
+                        parentForFind.find('audio').attr('data-state', 'play');
 
                         jQuery('.jp-jplayer').attr({
-                            'data-state':'play',
-                            'data-audio-src':songSrc
+                            'data-state': 'play',
+                            'data-audio-src': songSrc
                         });
 
                         findItemByTitlteClick.addClass('active playing');
@@ -210,21 +216,21 @@ var playerPlayOne = {
                         var playingSongParent = jQuery('.trak-item.active'),
                             soundThumb = parentForFind.data('thumbnail');
 
-                        jQuery('.mesh-thumbnail img').attr('src',soundThumb);
+                        jQuery('.mesh-thumbnail img').attr('src', soundThumb);
 
                     }
 
-                } else if ( jPlayerPausePlay == 'pause' ) {
+                } else if (jPlayerPausePlay == 'pause') {
 
-                    if ( parentForFind.hasClass('active') ) {
+                    if (parentForFind.hasClass('active')) {
 
                         jQuery("#mesh-main-player").jPlayer("play");
 
                         parentForFind.addClass('playing');
 
-                        parentForFind.find('audio').attr('data-state','play');
+                        parentForFind.find('audio').attr('data-state', 'play');
 
-                        jQuery('.jp-jplayer').attr('data-state','play');
+                        jQuery('.jp-jplayer').attr('data-state', 'play');
 
                         findItemByTitlteClick.addClass('active playing');
 
@@ -243,11 +249,11 @@ var playerPlayOne = {
                             m4a: songSrc
                         }).jPlayer("play");
 
-                        parentForFind.find('audio').attr('data-state','play');
+                        parentForFind.find('audio').attr('data-state', 'play');
 
                         jQuery('.jp-jplayer').attr({
-                            'data-state':'play',
-                            'data-audio-src':songSrc
+                            'data-state': 'play',
+                            'data-audio-src': songSrc
                         });
 
                         findItemByTitlteClick.addClass('active playing');
@@ -255,11 +261,12 @@ var playerPlayOne = {
                         var playingSongParent = jQuery('.trak-item.active'),
                             soundThumb = parentForFind.data('thumbnail');
 
-                        jQuery('.mesh-thumbnail img').attr('src',soundThumb);
+                        jQuery('.mesh-thumbnail img').attr('src', soundThumb);
 
                     }
 
-                };
+                }
+                ;
 
             } else {
 
@@ -276,11 +283,11 @@ var playerPlayOne = {
                     m4a: songSrc
                 }).jPlayer("play");
 
-                parentForFind.find('audio').attr('data-state','play');
+                parentForFind.find('audio').attr('data-state', 'play');
 
                 jQuery('.jp-jplayer').attr({
-                    'data-state':'play',
-                    'data-audio-src':songSrc
+                    'data-state': 'play',
+                    'data-audio-src': songSrc
                 });
 
                 findItemByTitlteClick.addClass('active playing');
@@ -288,21 +295,22 @@ var playerPlayOne = {
                 var playingSongParent = jQuery('.trak-item.active'),
                     soundThumb = parentForFind.data('thumbnail');
 
-                jQuery('.mesh-thumbnail img').attr('src',soundThumb);
+                jQuery('.mesh-thumbnail img').attr('src', soundThumb);
 
-            };
+            }
+            ;
 
         });
 
     },
 
-    playPrevStong: function(){
+    playPrevStong: function () {
 
-        jQuery('.mesh-prev').on('click',function(){
+        jQuery('.mesh-prev').on('click', function () {
 
             var playingSongParent = jQuery('.trak-item.active');
 
-            if ( playingSongParent.prev().length > 0 ) {
+            if (playingSongParent.prev().length > 0) {
 
                 var parentForFind = playingSongParent.prev(),
                     songTitle = parentForFind.find('audio').attr('title'),
@@ -317,33 +325,34 @@ var playerPlayOne = {
 
                 parentForFind.addClass('active playing');
 
-                jQuery('.mesh-thumbnail img').attr('src',soundThumb);
+                jQuery('.mesh-thumbnail img').attr('src', soundThumb);
 
                 jQuery("#mesh-main-player").jPlayer("setMedia", {
                     title: songTitle,
                     m4a: songSrc
                 }).jPlayer("play");
 
-                parentForFind.find('audio').attr('data-state','play');
+                parentForFind.find('audio').attr('data-state', 'play');
 
                 jQuery('.jp-jplayer').attr({
-                    'data-state':'play',
-                    'data-audio-src':songSrc
+                    'data-state': 'play',
+                    'data-audio-src': songSrc
                 });
 
-            };
+            }
+            ;
 
         });
 
     },
 
-    playNextSong: function(){
+    playNextSong: function () {
 
-        jQuery('.mesh-next').on('click',function(){
+        jQuery('.mesh-next').on('click', function () {
 
             var playingSongParent = jQuery('.trak-item.active');
 
-            if ( playingSongParent.next().length > 0 ) {
+            if (playingSongParent.next().length > 0) {
 
                 var parentForFind = playingSongParent.next(),
                     songTitle = parentForFind.find('audio').attr('title'),
@@ -358,21 +367,22 @@ var playerPlayOne = {
 
                 parentForFind.addClass('active playing');
 
-                jQuery('.mesh-thumbnail img').attr('src',soundThumb);
+                jQuery('.mesh-thumbnail img').attr('src', soundThumb);
 
                 jQuery("#mesh-main-player").jPlayer("setMedia", {
                     title: songTitle,
                     m4a: songSrc
                 }).jPlayer("play");
 
-                parentForFind.find('audio').attr('data-state','play');
+                parentForFind.find('audio').attr('data-state', 'play');
 
                 jQuery('.jp-jplayer').attr({
-                    'data-state':'play',
-                    'data-audio-src':songSrc
+                    'data-state': 'play',
+                    'data-audio-src': songSrc
                 });
 
-            };
+            }
+            ;
 
         });
 
@@ -380,54 +390,66 @@ var playerPlayOne = {
 
 }
 
-jQuery(document).ready(function(){
+jQuery(document).ready(function () {
 
     playerPlayOne.init();
     playerPlayOne.playPrevStong();
     playerPlayOne.playNextSong();
 
-    jQuery('.hide-player-button').on('click',function(){
+    if ('mediaSession' in navigator) {
+        navigator.mediaSession.setActionHandler('previoustrack', function () {
+            playerPlayOne.playPrevStong();
+        });
+
+        navigator.mediaSession.setActionHandler('nexttrack', function () {
+            playerPlayOne.playNextSong();
+        });
+    }
+
+    jQuery('.hide-player-button').on('click', function () {
 
         jQuery('.main-music-player').toggleClass('hide-player');
 
     });
 
-    jQuery('.trak-item audio').bind('canplay',function(){
+    jQuery('.trak-item audio').bind('canplay', function () {
 
         var seconds = jQuery(this)[0].duration;
         var duration = moment.duration(seconds, "seconds");
-        
+
         var time = "";
         var hours = duration.hours();
         var minutes = duration.minutes();
         var seconds = duration.seconds();
-        if (hours > 0) { time = hours + ":" ; }
+        if (hours > 0) {
+            time = hours + ":";
+        }
 
-        if ( minutes < 10 ) {
+        if (minutes < 10) {
 
             minutes = '0' + minutes;
 
         }
 
-        if ( seconds < 10 ) {
+        if (seconds < 10) {
 
             seconds = '0' + seconds;
 
         }
-        
+
         time = time + minutes + ":" + seconds;
         jQuery(this).parent().find('.trak-duration').text(time);
 
     });
 
-    jQuery(window).scroll(function(){
+    jQuery(window).scroll(function () {
 
         var aS = jQuery(window).scrollTop(),
             wH = jQuery(window).height(),
             dH = jQuery(document).height(),
             pM = jQuery('.main-music-player');
 
-        if ( aS >= ( dH - wH ) ) {
+        if (aS >= (dH - wH)) {
 
             pM.addClass('hide-player-footer');
 
@@ -441,13 +463,13 @@ jQuery(document).ready(function(){
 
 });
 
-$(window).scroll(function() {    
+$(window).scroll(function () {
     var scroll = $(window).scrollTop();
-    if (scroll >= 100 ) {
+    if (scroll >= 100) {
         $(".main-music-player").addClass("active", 1000);
 
     }
-    else{
+    else {
         $(".main-music-player").removeClass("active");
     }
 });
