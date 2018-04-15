@@ -81,6 +81,8 @@ jQuery("#mesh-main-player").jPlayer({
                 audtioArtist = parentForFind.data('artist'),
                 jPlayerPausePlay = jQuery('.jp-jplayer').attr('data-state');
 
+            mediasession(songTitle,audtioArtist);
+
 
             jQuery('.mesh-main-player .mesh-artist').text(audtioArtist);
 
@@ -157,21 +159,7 @@ var playerPlayOne = {
                 jPlayerPausePlay = jQuery(this).parent().find('audio').attr('data-state'),
                 pauseIf = jQuery('.jp-jplayer').attr('data-audio-src');
 
-            if ('mediaSession' in navigator) {
-
-                navigator.mediaSession.metadata = new MediaMetadata({
-                    title: songTitle,
-                    artist: audtioArtist,
-                    album: '',
-                    artwork: [
-                        {
-                            src: 'https://s-media-cache-ak0.pinimg.com/originals/fb/5b/7f/fb5b7fefd5c063d32627d76113307aa6.jpg',
-                            sizes: '512x512',
-                            type: 'image/jpg'
-                        },
-                    ]
-                });
-            }
+            mediasession(songTitle,audtioArtist);
 
             if (pauseIf == songSrc) {
 
@@ -325,6 +313,8 @@ var playerPlayOne = {
                 audtioArtist = parentForFind.data('artist'),
                 jPlayerPausePlay = jQuery('.jp-jplayer').attr('data-state');
 
+            mediasession(songTitle,audtioArtist);
+
             jQuery('.mesh-main-player .mesh-artist').text(audtioArtist);
 
             jQuery('.trak-item').removeClass('active playing');
@@ -371,21 +361,7 @@ var playerPlayOne = {
                 audtioArtist = parentForFind.data('artist'),
                 jPlayerPausePlay = jQuery('.jp-jplayer').attr('data-state');
 
-            if ('mediaSession' in navigator) {
-
-                navigator.mediaSession.metadata = new MediaMetadata({
-                    title: songTitle,
-                    artist: audtioArtist,
-                    album: '',
-                    artwork: [
-                        {
-                            src: 'https://s-media-cache-ak0.pinimg.com/originals/fb/5b/7f/fb5b7fefd5c063d32627d76113307aa6.jpg',
-                            sizes: '512x512',
-                            type: 'image/jpg'
-                        },
-                    ]
-                });
-            }
+            mediasession(songTitle,audtioArtist);
 
             jQuery('.mesh-main-player .mesh-artist').text(audtioArtist);
 
@@ -412,6 +388,21 @@ var playerPlayOne = {
 
     }
 
+}
+
+function mediasession(songtitle, songartist) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+        title: songtitle,
+        artist: songartist,
+        album: '',
+        artwork: [
+            {
+                src: 'https://s-media-cache-ak0.pinimg.com/originals/fb/5b/7f/fb5b7fefd5c063d32627d76113307aa6.jpg',
+                sizes: '512x512',
+                type: 'image/jpg'
+            },
+        ]
+    });
 }
 
 jQuery(document).ready(function () {
