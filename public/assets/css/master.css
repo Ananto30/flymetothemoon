@@ -15081,7 +15081,7 @@ body > div.fusion-fullwidth.fullwidth-box.fusion-fullwidth-2.fusion-parallax-lef
     }
 
     .topHeader {
-        background-color: rgba(0, 0, 0, 0.9);
+        background-color: rgba(0, 0, 0, 0.49);
         z-index: 22;
     }
 
@@ -18922,7 +18922,7 @@ body.opacityPlaylist .main-music-player .mesh-title {
 }
 
 .mesh-main-player .jplayerButton span {
-    background: #fff;
+    background: #ffffff;
 }
 
 .mesh-main-player .jplayerButton span.span-2 {

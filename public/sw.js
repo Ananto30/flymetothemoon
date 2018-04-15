@@ -29,6 +29,7 @@ self.addEventListener('install', function (e) {
                 'assets/js/mainVideo.js',
                 'assets/js/site.js',
                 'assets/css/master.css',
+                'assets/css/main.css',
                 'https://fonts.googleapis.com/css?family=Dancing+Script',
                 'assets/img/albums/sin2.jpeg',
                 'assets/fonts/fontawesome-webfont93e3.woff2?v=4.4.0',

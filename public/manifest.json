@@ -3,7 +3,7 @@
   "short_name": "Fly me to the Moon",
   "display": "standalone",
   "start_url": "/",
-  "theme_color": "#ffffff",
+  "theme_color": "#838383",
   "background_color": "#ffffff",
   "icons": [
     {

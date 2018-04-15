@@ -81,7 +81,7 @@ jQuery("#mesh-main-player").jPlayer({
                 audtioArtist = parentForFind.data('artist'),
                 jPlayerPausePlay = jQuery('.jp-jplayer').attr('data-state');
 
-            mediasession(songTitle,audtioArtist);
+            mediasession(songTitle, audtioArtist);
 
 
             jQuery('.mesh-main-player .mesh-artist').text(audtioArtist);
@@ -159,7 +159,7 @@ var playerPlayOne = {
                 jPlayerPausePlay = jQuery(this).parent().find('audio').attr('data-state'),
                 pauseIf = jQuery('.jp-jplayer').attr('data-audio-src');
 
-            mediasession(songTitle,audtioArtist);
+            mediasession(songTitle, audtioArtist);
 
             if (pauseIf == songSrc) {
 
@@ -296,113 +296,115 @@ var playerPlayOne = {
     playPrevStong: function () {
 
         jQuery('.mesh-prev').on('click', function () {
-            self.playp();
+            playp();
         });
-
-    },
-
-    playp: function () {
-        var playingSongParent = jQuery('.trak-item.active');
-
-        if (playingSongParent.prev().length > 0) {
-
-            var parentForFind = playingSongParent.prev(),
-                songTitle = parentForFind.find('audio').attr('title'),
-                songSrc = parentForFind.data('audio'),
-                soundThumb = parentForFind.data('thumbnail'),
-                audtioArtist = parentForFind.data('artist'),
-                jPlayerPausePlay = jQuery('.jp-jplayer').attr('data-state');
-
-            mediasession(songTitle,audtioArtist);
-
-            jQuery('.mesh-main-player .mesh-artist').text(audtioArtist);
-
-            jQuery('.trak-item').removeClass('active playing');
-
-            parentForFind.addClass('active playing');
-
-            jQuery('.mesh-thumbnail img').attr('src', soundThumb);
-
-            jQuery("#mesh-main-player").jPlayer("setMedia", {
-                title: songTitle,
-                m4a: songSrc
-            }).jPlayer("play");
-
-            parentForFind.find('audio').attr('data-state', 'play');
-
-            jQuery('.jp-jplayer').attr({
-                'data-state': 'play',
-                'data-audio-src': songSrc
-            });
-
-        }
-        ;
 
     },
 
     playNextSong: function () {
 
         jQuery('.mesh-next').on('click', function () {
-
-            self.playn();
+            playn();
         });
 
     },
 
-    playn: function () {
-        var playingSongParent = jQuery('.trak-item.active');
 
-        if (playingSongParent.next().length > 0) {
+}
 
-            var parentForFind = playingSongParent.next(),
-                songTitle = parentForFind.find('audio').attr('title'),
-                songSrc = parentForFind.data('audio'),
-                soundThumb = parentForFind.data('thumbnail'),
-                audtioArtist = parentForFind.data('artist'),
-                jPlayerPausePlay = jQuery('.jp-jplayer').attr('data-state');
+function playp() {
+    var playingSongParent = jQuery('.trak-item.active');
 
-            mediasession(songTitle,audtioArtist);
+    if (playingSongParent.prev().length > 0) {
 
-            jQuery('.mesh-main-player .mesh-artist').text(audtioArtist);
+        var parentForFind = playingSongParent.prev(),
+            songTitle = parentForFind.find('audio').attr('title'),
+            songSrc = parentForFind.data('audio'),
+            soundThumb = parentForFind.data('thumbnail'),
+            audtioArtist = parentForFind.data('artist'),
+            jPlayerPausePlay = jQuery('.jp-jplayer').attr('data-state');
 
-            jQuery('.trak-item').removeClass('active playing');
+        mediasession(songTitle, audtioArtist);
 
-            parentForFind.addClass('active playing');
+        jQuery('.mesh-main-player .mesh-artist').text(audtioArtist);
 
-            jQuery('.mesh-thumbnail img').attr('src', soundThumb);
+        jQuery('.trak-item').removeClass('active playing');
 
-            jQuery("#mesh-main-player").jPlayer("setMedia", {
-                title: songTitle,
-                m4a: songSrc
-            }).jPlayer("play");
+        parentForFind.addClass('active playing');
 
-            parentForFind.find('audio').attr('data-state', 'play');
+        jQuery('.mesh-thumbnail img').attr('src', soundThumb);
 
-            jQuery('.jp-jplayer').attr({
-                'data-state': 'play',
-                'data-audio-src': songSrc
-            });
+        jQuery("#mesh-main-player").jPlayer("setMedia", {
+            title: songTitle,
+            m4a: songSrc
+        }).jPlayer("play");
 
-        }
-        ;
+        parentForFind.find('audio').attr('data-state', 'play');
+
+        jQuery('.jp-jplayer').attr({
+            'data-state': 'play',
+            'data-audio-src': songSrc
+        });
 
     }
+    ;
+
+}
+
+function playn() {
+    var playingSongParent = jQuery('.trak-item.active');
+
+    if (playingSongParent.next().length > 0) {
+
+        var parentForFind = playingSongParent.next(),
+            songTitle = parentForFind.find('audio').attr('title'),
+            songSrc = parentForFind.data('audio'),
+            soundThumb = parentForFind.data('thumbnail'),
+            audtioArtist = parentForFind.data('artist'),
+            jPlayerPausePlay = jQuery('.jp-jplayer').attr('data-state');
+
+        mediasession(songTitle, audtioArtist);
+
+        jQuery('.mesh-main-player .mesh-artist').text(audtioArtist);
+
+        jQuery('.trak-item').removeClass('active playing');
+
+        parentForFind.addClass('active playing');
+
+        jQuery('.mesh-thumbnail img').attr('src', soundThumb);
+
+        jQuery("#mesh-main-player").jPlayer("setMedia", {
+            title: songTitle,
+            m4a: songSrc
+        }).jPlayer("play");
+
+        parentForFind.find('audio').attr('data-state', 'play');
+
+        jQuery('.jp-jplayer').attr({
+            'data-state': 'play',
+            'data-audio-src': songSrc
+        });
+
+    }
+    ;
 
 }
 
 function mediasession(songtitle, songartist) {
-    navigator.mediaSession.metadata = new MediaMetadata({
-        title: songtitle,
-        artist: songartist,
-        album: '',
-        artwork: [
-            {
-                src: 'https://s-media-cache-ak0.pinimg.com/originals/fb/5b/7f/fb5b7fefd5c063d32627d76113307aa6.jpg',
-                sizes: '512x512',
-                type: 'image/jpg'
-            },
-        ]
-    });
+    if ('mediaSession' in navigator) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+            title: songtitle,
+            artist: songartist,
+            album: '',
+            artwork: [
+                {
+                    src: 'https://s-media-cache-ak0.pinimg.com/originals/fb/5b/7f/fb5b7fefd5c063d32627d76113307aa6.jpg',
+                    sizes: '512x512',
+                    type: 'image/jpg'
+                },
+            ]
+        });
+    }
 }
 
 jQuery(document).ready(function () {
@@ -413,11 +415,11 @@ jQuery(document).ready(function () {
 
     if ('mediaSession' in navigator) {
         navigator.mediaSession.setActionHandler('previoustrack', function () {
-            playerPlayOne.playp();
+            playp();
         });
 
         navigator.mediaSession.setActionHandler('nexttrack', function () {
-            playerPlayOne.playn();
+            playn();
         });
     }
 
