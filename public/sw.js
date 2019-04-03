@@ -18,7 +18,7 @@ self.addEventListener('install', function (e) {
     e.waitUntil(
         caches.open(CACHE_NAME).then(function (cache) {
             return cache.addAll([
-                '/',
+                // '/',
                 'sw.js',
                 'manifest.json',
                 'assets/js/jquery.js',
